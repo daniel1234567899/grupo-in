@@ -497,8 +497,7 @@ pre {
 .col-xl-auto {
   position: relative;
   width: 100%;
-  padding-right: 5px;
-  padding-left: 5px; }
+  padding: 5px 5px; }
 
 .col {
   -ms-flex-preferred-size: 0;
@@ -8176,7 +8175,7 @@ h1, h2, h3, h4, h5,
   z-index: 3; }
   @media (max-width: 991.98px) {
     .ftco-navbar-light {
-      background: #000000 !important;
+      background: #fff !important;
       position: relative;
       top: 0; } }
   .ftco-navbar-light .navbar-brand {
@@ -8190,13 +8189,13 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    font-size: 15px;
+    font-size: 18px;
     padding-top: .9rem;
     padding-bottom: .9rem;
     padding-left: 20px;
     padding-right: 20px;
-    color: #74787c;
-    font-weight: 600;
+    color: #fff;
+    font-weight: 800;
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
       color: #282c6b; }
@@ -8205,7 +8204,7 @@ h1, h2, h3, h4, h5,
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 0;
-        color: #fff; } }
+        color: #333; } }
   .ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu {
     border: none;
     background: #fff;
@@ -8260,7 +8259,7 @@ h1, h2, h3, h4, h5,
       color: #282c6b; } }
   .ftco-navbar-light .navbar-toggler {
     border: none;
-    color: rgba(255, 255, 255, 0.5) !important;
+    color: #333 !important;
     cursor: pointer;
     padding-right: 0;
     text-transform: uppercase;
@@ -8312,7 +8311,7 @@ h1, h2, h3, h4, h5,
         padding-right: 0rem !important; } }
     .ftco-navbar-light.scrolled .navbar-toggler {
       border: none;
-      color: rgba(0, 0, 0, 0.5) !important;
+      color: #333 !important;
       border-color: rgba(0, 0, 0, 0.5) !important;
       cursor: pointer;
       padding-right: 0;
@@ -8343,7 +8342,7 @@ h1, h2, h3, h4, h5,
 
 .hero-wrap {
   width: 100%;
-  height: 850px;
+  height: 860px;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -8351,8 +8350,11 @@ h1, h2, h3, h4, h5,
   z-index: 0; }
   @media (max-width: 991.98px) {
     .hero-wrap {
-      background-position: top center !important; } }
+      height: 650px;
+      background-position: top center !important; } 
+    }
   .hero-wrap .overlay {
+
     position: absolute;
     top: 0;
     left: 0;
@@ -8369,9 +8371,9 @@ h1, h2, h3, h4, h5,
     background: -ms-linear-gradient(45deg, black 0%, white 100%);
     background: linear-gradient(45deg, black 0%, white 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=1 );
-    height: 850px; }
+    height: 860px; }
   .hero-wrap.hero-wrap-2 {
-    height: 600px !important;
+    height: 650px !important;
     position: relative; }
     .hero-wrap.hero-wrap-2 .overlay {
       width: 100%;
@@ -8383,13 +8385,17 @@ h1, h2, h3, h4, h5,
         display: none; }
 
 .slider-text {
-  height: 850px; }
+  height: 860px; 
+  
+}
   .slider-text h1 {
     font-size: 60px;
-    color: #74787c;
+    color: #fff;
     line-height: 1.1;
     font-weight: 400;
-    position: relative; }
+    position: relative;
+    text-shadow: black 0.1em 0.1em 0.2em; 
+  }
     .slider-text h1:after {
       position: absolute;
       top: -5px;
@@ -9341,7 +9347,8 @@ textarea.form-control {
     -webkit-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    margin-top: -60px; }
+    position: absolute;
+    bottom: 20px;}
     .staff .text > div {
       width: 100%;
       padding: 0 1em;
@@ -9379,7 +9386,7 @@ textarea.form-control {
     .staff .ftco-social li a {
       color: #fff; }
   .staff:hover .text h3 {
-    color: #000000; }
+    color: #282c6b; }
 
 .ftco-social {
   padding: 0; }
@@ -9975,8 +9982,31 @@ textarea.form-control {
       display: flex;
       width: auto;
     }
-
-
+    .video{
+      position: absolute;
+      height: 100%;
+      width: auto;
+    }
+    .rotar{
+      transform: rotate(90deg);
+      position: fixed;
+      left: -38%;
+      bottom: 100px;
+    }
+    @media (max-width: 991.98px) {
+      .slider-text{
+        height: 650px !important; 
+      }
+      .slider-text h1 {
+        font-size: 40px;
+      }
+      .rotar{
+        left: -40%;
+      }
+      .hero-wrap .overlay {
+        height: 650px;
+      }
+    }
     @media (max-width: 767.98px) {
       .state-list {
         width: 100%;
