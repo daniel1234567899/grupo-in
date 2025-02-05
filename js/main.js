@@ -38,13 +38,13 @@
 
 	var carousel = function() {
 		$('.carousel-testimony').owlCarousel({
-			center: true,
-			loop: true,
+			center: false,
+			loop: false,			
 			items:1,
-			margin: 30,
-			stagePadding: 0,
-			nav: false,
-			navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
+			margin: 20,
+			stagePadding: 25,			
+			nav: true,
+			navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>'],
 			responsive:{
 				0:{
 					items: 1
@@ -60,20 +60,23 @@
 		$('.carousel-properties').owlCarousel({
 			center: true,
 			loop: true,
+			autoplay: true,
+			autoplayTimeout:3000,
+			dots: false,
 			items:1,
-			margin: 30,
-			stagePadding: 0,
-			nav: false,
-			navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
+			margin: 20,
+			stagePadding: 25,
+			nav: true,
+			navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>'],
 			responsive:{
 				0:{
-					items: 1
+					items: 3
 				},
 				600:{
-					items: 2
+					items: 3
 				},
 				1000:{
-					items: 3
+					items: 5
 				}
 			}
 		});
