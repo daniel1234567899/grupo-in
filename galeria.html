@@ -1,16 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería con Filtros</title>
+    <title>Galería con Filtros y Lightbox</title>
+    
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
         }
         .filter-buttons {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .filter-buttons button {
             padding: 10px;
@@ -29,15 +34,22 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+        .gallery a {
+            margin: 5px;
+        }
         .gallery img {
             width: 200px;
             height: 150px;
             object-fit: cover;
-            margin: 10px;
             display: none; /* Ocultamos las imágenes por defecto */
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
         }
         .show {
-            display: block !important;
+            display: inline-block !important;
         }
     </style>
 </head>
@@ -51,29 +63,32 @@
         <button onclick="filterImages('cocacola', 'comercial')">Oficinas de Coca-Cola</button>
     </div>
     <div class="gallery" id="comercial">
-        <img src="images/PANO.jpg" class="pepsi show">
-        <img src="images/rica-ofi.jpg" class="pepsi show">
-        <img src="images/32.jpg" class="cocacola show">
-        <img src="images/32.jpg" class="cocacola show">
+        <a href="images/femsa-oficnas.jpg" data-lightbox="comercial" class="pepsi show"><img src="images/femsa-oficnas.jpg" class="pepsi show"></a>
+        <a href="images/mantenimiento.jpg" data-lightbox="comercial" class="pepsi show"><img src="images/mantenimiento.jpg" class="pepsi show"></a>
+        <a href="images/manufactura.jpg" data-lightbox="comercial" class="cocacola show"><img src="images/manufactura.jpg" class="cocacola show"></a>
+        <a href="images/contruccion.png" data-lightbox="comercial" class="cocacola show"><img src="images/contruccion.png" class="cocacola show"></a>
     </div>
 
     <!-- Filtros para Casas -->
     <h2>Casas</h2>
     <div class="filter-buttons">
         <button onclick="filterImages('all', 'casas')">Todos</button>
-        <button onclick="filterImages('casa1', 'casas')">Casa Moderno</button>
+        <button onclick="filterImages('casa1', 'casas')">Casa Moderna</button>
         <button onclick="filterImages('casa2', 'casas')">Casa Clásica</button>
     </div>
     <div class="gallery" id="casas">
-        <img src="images/femsa-oficnas.jpg" class="casa1 show">
-        <img src="images/mantenimiento.jpg" class="casa1 show">
-        <img src="images/manufactura.jpg" class="casa2 show">
-        <img src="images/contruccion.png" class="casa2 show">
+        <a href="images/PANO.jpg" data-lightbox="casas" class="casa1 show"><img src="images/PANO.jpg" class="casa1 show"></a>
+        <a href="images/rica-ofi.jpg" data-lightbox="casas" class="casa1 show"><img src="images/rica-ofi.jpg" class="casa1 show"></a>
+        <a href="images/32.jpg" data-lightbox="casas" class="casa2 show"><img src="images/32.jpg" class="casa2 show"></a>
+        <a href="images/32.jpg" data-lightbox="casas" class="casa2 show"><img src="images/32.jpg" class="casa2 show"></a>
     </div>
+
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
     <script>
         function filterImages(category, galleryId) {
-            let images = document.querySelectorAll(`#${galleryId} img`);
+            let images = document.querySelectorAll(`#${galleryId} a`);
             images.forEach(img => {
                 img.classList.remove("show");
                 if (category === "all" || img.classList.contains(category)) {
