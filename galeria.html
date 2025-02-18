@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería con Filtros y Lightbox</title>
     
-    <!-- Lightbox2 CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="css/glightbox.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,15 +17,17 @@
         }
         .filter-buttons button {
             padding: 10px;
-            margin: 5px;
+            margin: 3px;
             cursor: pointer;
             border: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
+            background-color: #fff;
+            border: 2px solid rgb(116, 120, 124) !important;;
+            color: rgb(116, 120, 124) !important;
+            font-weight: 800;
         }
         .filter-buttons button:hover {
-            background-color: #0056b3;
+            border-color: rgb(40, 44, 107) !important;
+            color: rgb(40, 44, 107) !important;
         }
         .gallery {
             display: flex;
@@ -35,13 +35,13 @@
             justify-content: center;
         }
         .gallery a {
-            margin: 5px;
+            display: none; /* Ocultamos todas las imágenes inicialmente */
+            margin: 3px;
         }
         .gallery img {
             width: 200px;
             height: 150px;
             object-fit: cover;
-            display: none; /* Ocultamos las imágenes por defecto */
             cursor: pointer;
             transition: transform 0.2s;
         }
@@ -49,11 +49,25 @@
             transform: scale(1.1);
         }
         .show {
-            display: inline-block !important;
+            display: inline-block !important; /* Mostramos solo las imágenes filtradas */
+        }
+        .image-container {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .image-container img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
+
+
+    
+
+
 
     <!-- Filtros para Arquitectura Comercial -->
     <h2>Arquitectura Comercial</h2>
@@ -63,10 +77,10 @@
         <button onclick="filterImages('cocacola', 'comercial')">Oficinas de Coca-Cola</button>
     </div>
     <div class="gallery" id="comercial">
-        <a href="images/femsa-oficnas.jpg" data-lightbox="comercial" class="pepsi show"><img src="images/femsa-oficnas.jpg" class="pepsi show"></a>
-        <a href="images/mantenimiento.jpg" data-lightbox="comercial" class="pepsi show"><img src="images/mantenimiento.jpg" class="pepsi show"></a>
-        <a href="images/manufactura.jpg" data-lightbox="comercial" class="cocacola show"><img src="images/manufactura.jpg" class="cocacola show"></a>
-        <a href="images/contruccion.png" data-lightbox="comercial" class="cocacola show"><img src="images/contruccion.png" class="cocacola show"></a>
+        <a href="images/comercial.jpg" data-lightbox="comercial" class="pepsi glightbox"><img src="images/comercial.jpg" class="pepsi"></a>
+        <a href="images/institucional.jpg" data-lightbox="comercial" class="pepsi glightbox"><img src="images/institucional.jpg" class="pepsi"></a>
+        <a href="images/05.jpg" data-lightbox="comercial" class="cocacola glightbox"><img src="images/05.jpg" class="cocacola"></a>
+        <a href="images/tall-building-city.jpg" data-lightbox="comercial" class="cocacola glightbox"><img src="images/tall-building-city.jpg" class="cocacola"></a>
     </div>
 
     <!-- Filtros para Casas -->
@@ -77,25 +91,79 @@
         <button onclick="filterImages('casa2', 'casas')">Casa Clásica</button>
     </div>
     <div class="gallery" id="casas">
-        <a href="images/PANO.jpg" data-lightbox="casas" class="casa1 show"><img src="images/PANO.jpg" class="casa1 show"></a>
-        <a href="images/rica-ofi.jpg" data-lightbox="casas" class="casa1 show"><img src="images/rica-ofi.jpg" class="casa1 show"></a>
-        <a href="images/32.jpg" data-lightbox="casas" class="casa2 show"><img src="images/32.jpg" class="casa2 show"></a>
-        <a href="images/32.jpg" data-lightbox="casas" class="casa2 show"><img src="images/32.jpg" class="casa2 show"></a>
+        <a href="images/femsa-oficnas.jpg" data-lightbox="casas" class="casa1 glightbox"><img src="images/femsa-oficnas.jpg" class="casa1"></a>
+        <a href="images/mantenimiento.jpg" data-lightbox="casas" class="casa1 glightbox"><img src="images/mantenimiento.jpg" class="casa1"></a>
+        <a href="images/manufactura.jpg" data-lightbox="casas" class="casa2 glightbox"><img src="images/manufactura.jpg" class="casa2"></a>
+        <a href="images/contruccion.png" data-lightbox="casas" class="casa2 glightbox"><img src="images/contruccion.png" class="casa2"></a>
     </div>
-
+    
+  
     <!-- Lightbox2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+        <script src="js/glightbox.js"></script>
+        <script>
+            var lightbox = GLightbox();
+            lightbox.on('open', (target) => {
+                console.log('lightbox opened');
+            });
+            var lightboxDescription = GLightbox({
+                selector: '.glightbox2'
+            });
+            var lightboxVideo = GLightbox({
+                selector: '.glightbox3'
+            });
+            lightboxVideo.on('slide_changed', ({ prev, current }) => {
+                console.log('Prev slide', prev);
+                console.log('Current slide', current);
+
+                const { slideIndex, slideNode, slideConfig, player } = current;
+
+                if (player) {
+                    if (!player.ready) {
+                        // If player is not ready
+                        player.on('ready', (event) => {
+                            // Do something when video is ready
+                        });
+                    }
+
+                    player.on('play', (event) => {
+                        console.log('Started play');
+                    });
+
+                    player.on('volumechange', (event) => {
+                        console.log('Volume change');
+                    });
+
+                    player.on('ended', (event) => {
+                        console.log('Video ended');
+                    });
+                }
+            });
+
+            var lightboxInlineIframe = GLightbox({
+                selector: '.glightbox4'
+            });
+
+            
+        </script>
 
     <script>
         function filterImages(category, galleryId) {
-            let images = document.querySelectorAll(`#${galleryId} a`);
-            images.forEach(img => {
-                img.classList.remove("show");
-                if (category === "all" || img.classList.contains(category)) {
-                    img.classList.add("show");
+            let elements = document.querySelectorAll(`#${galleryId} a`); // Seleccionar los <a> que envuelven las imágenes
+            elements.forEach(el => {
+                el.style.display = "none"; // Ocultamos todo
+                if (category === "all" || el.classList.contains(category)) {
+                    el.style.display = "inline-block"; // Mostramos solo los que coincidan
                 }
             });
         }
+
+        // Mostrar todas las imágenes al cargar la página
+        document.addEventListener("DOMContentLoaded", function() {
+            filterImages("all", "comercial");
+            filterImages("all", "casas");
+        });
+
     </script>
 
 </body>
