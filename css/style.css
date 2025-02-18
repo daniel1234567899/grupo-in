@@ -9380,6 +9380,7 @@ textarea.form-control {
       -ms-transition: all 0.3s ease;
       transition: all 0.3s ease; }
     .staff .text h3 {
+      text-align: center;
       font-size: 25px;
       font-weight: 900;
       margin-bottom: 0;
