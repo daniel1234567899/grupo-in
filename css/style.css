@@ -10237,16 +10237,16 @@ textarea.form-control {
         height: 100px;
       }
       .glightbox-clean .gnext {
-          top: 0;
-          bottom: 0;
-          right: 10px;
-          margin: auto;
+          top: 0 !important;
+          bottom: 0 !important;
+          right: 10px !important;
+          margin: auto !important;
       }
       .glightbox-clean .gprev {
-          top: 0;
-          bottom: 0;
-          left: 10px;
-          margin: auto;
+          top: 0 !important;
+          bottom: 0!important;
+          left: 10px !important;
+          margin: auto !important;
       }
       .desck{
         display: none;
