@@ -10047,7 +10047,7 @@ textarea.form-control {
         box-shadow: 103px -103px 0px -100px rgba(116, 120, 124, .6), -103px 103px 0px -100px rgba(116, 120, 124, .8);
     }
     .desck{
-      display: inline-block;
+      display: block;
     }
     .movil{
       display: none;
@@ -10252,7 +10252,7 @@ textarea.form-control {
         display: none;
       }
       .movil{
-        display: inline-block;
+        display: block;
       }
       .state-list {
         width: 100%;
